@@ -1,0 +1,29 @@
+TRAINING
+
+Preprocess - Regression
+    Logistic
+        Subject 1 score: 76.67%
+        Subject 2 score: 58.33%
+    SVM
+        Subject 1 score: 78.75%
+        Subject 2 score: 55.42%
+
+Preprocess - ICA
+    Logistic
+        Subject 1 score: 81.25%
+        Subject 2 score: 51.67%
+    SVM
+        Subject 1 score: 79.17%
+        Subject 2 score: 62.92%
+
+
+NOTE: ICA with SVM gives a good balance on both subjects
+
+TEST
+
+
+GUMPY
+
+Subject B04 - 93.75%, falls down to 70-something with ICA
+Subject B01 - 72.31% with ICA
+Best performance on Graz 2B uses Filter Bank CSP as feature extractor

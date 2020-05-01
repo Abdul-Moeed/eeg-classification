@@ -1,0 +1,18 @@
+# ASA electrode file
+ReferenceLabel	avg
+UnitPosition	mm
+NumberPositions=	6
+Positions
+-86.0761 -19.9897 -47.9860
+85.7939 -20.0093 -48.0310
+0.0083 86.8110 -39.9830
+65.3581 -11.6317 64.358
+0.4009 -9.167 100.244
+67.1179 -10.9003 63.58  
+Labels
+LPA
+RPA
+Nz
+EEG:C3
+EEG:Cz
+EEG:C4
