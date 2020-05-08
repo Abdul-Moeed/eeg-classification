@@ -84,3 +84,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+import gumpy
+a = gumpy.classify('LogisticRegression', 0, 0, 0, 0)
+gumpy.classification.vote(0, 0, 0, 0, 'soft', False, )

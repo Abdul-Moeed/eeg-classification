@@ -2,7 +2,6 @@
 from mne.preprocessing import ICA, create_eog_epochs
 import mne.channels as chan
 
-
 def ica_preprocess(raw, vis, lp_threshold):
     """add montage and filter slow drifts."""
     data_path = __file__ + '/../../data/'
