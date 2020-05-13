@@ -1,22 +1,18 @@
 # Classifier demo
 import mne
 from mne import io
-import numpy as np
 
 import os
 
 
 # jupyter notebook --notebook-dir="D:/Box/Programs/PythonProjects/eeg-classification"
 
-# from estimators.linear import train_linear as estimator
 from estimators.svm import train_svm as estimator
 from artifact_removers.ica import apply_ica as artifact_remover
-# from artifact_removers.regression_based import apply_reg_artifact_remover as artifact_remover
 
 import pickle
 
 print(__doc__)
-
 
 def epoch_data(data_path):
     # Set params
@@ -26,9 +22,15 @@ def epoch_data(data_path):
 
     # Setup for reading the raw data
     raw = io.read_raw_gdf(raw_fname, preload=True)
+    raw.set_channel_types({'EOG:ch01': 'eog', 'EOG:ch02': 'eog', 'EOG:ch03': 'eog'})
+
+    # Read montage/digitisation points
+    raw_fname = 'data/GrazIV2B_montage.elc'
+    montage = mne.channels.read_custom_montage(raw_fname)
+    raw.set_montage(montage)
 
     # Remove artifacts
-    raw = artifact_remover(raw, lp_threshold=6, cor_threshold=1.2, vis=False)
+    raw = artifact_remover(raw, lp_threshold=6, cor_threshold=1.2, vis=True)
 
     raw.filter(4, 12, fir_design='firwin')  # extract alpha band (see jupyter notebook)
     events, _ = mne.events_from_annotations(raw)
@@ -71,7 +73,7 @@ def test(data_path):
 
 def main():
     # Get data path
-    data_file = 'B0101T.gdf'
+    data_file = 'B0503T.gdf'
     data_path = os.getcwd() + '/data/' + data_file
 
     # train model

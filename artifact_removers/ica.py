@@ -4,13 +4,6 @@ import mne.channels as chan
 
 def ica_preprocess(raw, vis, lp_threshold):
     """add montage and filter slow drifts."""
-    data_path = __file__ + '/../../data/'
-    raw.set_channel_types({'EOG:ch01': 'eog', 'EOG:ch02': 'eog', 'EOG:ch03': 'eog'})
-
-    # Read montage/digitisation points
-    raw_fname = data_path + 'GrazIV2B_montage.elc'
-    montage = chan.read_custom_montage(raw_fname)
-    raw.set_montage(montage)
 
     # Get a summary of how the ocular artifact manifests across each channel type
     eog_evoked = create_eog_epochs(raw).average()
@@ -38,7 +31,7 @@ def remove_components(ica, raw, eog_evoked, cor_threshold, vis):
         ica.plot_scores(eog_scores)
 
         # Plot diagnostics
-        ica.plot_properties(raw, picks=eog_indices)
+#        ica.plot_properties(raw, picks=eog_indices)
 
         # Plot ICs applied to raw data, with EOG matches highlighted
         ica.plot_sources(raw)
