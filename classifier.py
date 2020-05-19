@@ -4,15 +4,13 @@ from mne import io
 
 import os
 
-
-# jupyter notebook --notebook-dir="D:/Box/Programs/PythonProjects/eeg-classification"
-
 from estimators.svm import train_svm as estimator
 from artifact_removers.ica import apply_ica as artifact_remover
 
 import pickle
 
 print(__doc__)
+
 
 def epoch_data(data_path):
     # Set params
